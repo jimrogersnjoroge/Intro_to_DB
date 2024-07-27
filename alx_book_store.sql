@@ -10,6 +10,9 @@ CREATE TABLE Authors (
   author_name VARCHAR(215)
 );
 
+-- Check for creation and implementation of Authors table
+DESCRIBE Authors;
+
 -- Create the Books table
 CREATE TABLE Books (
   book_id INT PRIMARY KEY,
@@ -20,6 +23,9 @@ CREATE TABLE Books (
   FOREIGN KEY (author_id) REFERENCES Authors(author_id)
 );
 
+-- Check for creation and implementation of Books table
+DESCRIBE Books;
+
 -- Create the Customers table
 CREATE TABLE Customers (
   customer_id INT PRIMARY KEY,
@@ -28,6 +34,9 @@ CREATE TABLE Customers (
   address TEXT
 );
 
+-- Check for creation and implementation of Customers table
+DESCRIBE Customers;
+
 -- Create the Orders table
 CREATE TABLE Orders (
   order_id INT PRIMARY KEY,
@@ -35,6 +44,9 @@ CREATE TABLE Orders (
   order_date DATE,
   FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
 );
+
+-- Check for creation and implementation of Orders table
+DESCRIBE Orders;
 
 -- Create the Order_Details table
 CREATE TABLE Order_Details (
@@ -45,3 +57,6 @@ CREATE TABLE Order_Details (
   FOREIGN KEY (order_id) REFERENCES Orders(order_id),
   FOREIGN KEY (book_id) REFERENCES Books(book_id)
 );
+
+-- Check for creation and implementation of Order_Details table
+DESCRIBE Order_Details;
