@@ -1,62 +1,33 @@
--- Create the database
-CREATE DATABASE alx_book_store;
+Imagine you’re tasked with designing a MySQL database for an online bookstore. The database should store information about books, authors, customers, orders, and order details. Here’s an overview of the database schema:
 
--- Use the database
-USE alx_book_store;
+Database Name: alx_book_store
 
--- Create the Authors table
-CREATE TABLE Authors (
-  author_id INT PRIMARY KEY,
-  author_name VARCHAR(215)
-);
+Books: Stores information about books available in the bookstore.
 
--- Check for creation and implementation of Authors table
-DESCRIBE Authors;
+book_id (Primary Key)
+title VARCHAR(130)
+author_id (Foreign Key referencing Authors table)
+price DOUBLE
+publication_date DATE
+Authors: Stores information about authors.
 
--- Create the Books table
-CREATE TABLE Books (
-  book_id INT PRIMARY KEY,
-  title VARCHAR(130),
-  author_id INT,
-  price DOUBLE,
-  publication_date DATE,
-  FOREIGN KEY (author_id) REFERENCES Authors(author_id)
-);
+author_id (Primary Key)
+author_name VARCHAR(215)
+Customers: Stores information about customers.
 
--- Check for creation and implementation of Books table
-DESCRIBE Books;
+customer_id (Primary Key)
+customer_name VARCHAR(215)
+email VARCHAR(215)
+address TEXT
+Orders: Stores information about orders placed by customers.
 
--- Create the Customers table
-CREATE TABLE Customers (
-  customer_id INT PRIMARY KEY,
-  customer_name VARCHAR(215),
-  email VARCHAR(215),
-  address TEXT
-);
+order_id (Primary Key)
+customer_id (Foreign Key referencing Customers table)
+order_date DATE
+Order_Details: Stores information about the books included in each order.
 
--- Check for creation and implementation of Customers table
-DESCRIBE Customers;
-
--- Create the Orders table
-CREATE TABLE Orders (
-  order_id INT PRIMARY KEY,
-  customer_id INT,
-  order_date DATE,
-  FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
-);
-
--- Check for creation and implementation of Orders table
-DESCRIBE Orders;
-
--- Create the Order_Details table
-CREATE TABLE Order_Details (
-  orderdetailid INT PRIMARY KEY,
-  order_id INT,
-  book_id INT,
-  quantity DOUBLE,
-  FOREIGN KEY (order_id) REFERENCES Orders(order_id),
-  FOREIGN KEY (book_id) REFERENCES Books(book_id)
-);
-
--- Check for creation and implementation of Order_Details table
-DESCRIBE Order_Details;
+orderdetailid (Primary Key)
+order_id (Foreign Key referencing Orders table)
+book_id (Foreign Key referencing Books table)
+quantity DOUBLE
+NOTE : - The file extension should be alx_book_store.sql file - All SQL keywords should be in uppercase
